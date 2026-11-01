@@ -55,4 +55,19 @@ Import the configured chat model in a script under `src/`:
 from global_llm_client import llm
 ```
 
+To configure model settings when creating a client, use the factory:
+
+```python
+from global_llm_client import create_llm
+
+llm = create_llm(
+    temperature=0.5,
+    max_output_tokens=500,
+    timeout=30,
+    max_retries=2,
+)
+```
+
+Temperature defaults to `0.5`; `max_output_tokens`, timeout, and retries are optional. The output-token limit maps to the provider-specific parameter. There is no separate input-token setting; prompts are limited by the selected model's context window. Gemini uses `request_timeout` for timeout and accepts `max_retries`.
+
 Run the examples with `uv run python src/00-hello-world.py`.

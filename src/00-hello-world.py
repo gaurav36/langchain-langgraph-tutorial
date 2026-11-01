@@ -1,4 +1,6 @@
-from global_llm_client import llm
+from global_llm_client import create_llm
+
+llm = create_llm()
 
 response = llm.invoke("Tell me a joke about light bulbs!")
 print(response.content)
